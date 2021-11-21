@@ -1,5 +1,5 @@
 import { Body, Controller, Get, HttpCode, Post } from "@nestjs/common";
-import { CreateMovieDto } from "./dto";
+import { CreateMovieDto, MovieDto } from "./dto";
 import { MoviesService } from "./movies.service";
 import { Movie } from "./interfaces";
 
@@ -14,7 +14,7 @@ export class MoviesController {
   }
 
   @Post()
-  create(@Body() createMovieDto: CreateMovieDto): Movie {
+  create(@Body() createMovieDto: CreateMovieDto): MovieDto {
     this.moviesService.create(createMovieDto);
     return this.moviesService.findLast();
   }
